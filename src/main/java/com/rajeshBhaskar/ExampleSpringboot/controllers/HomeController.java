@@ -1,4 +1,4 @@
-package com.rajeshBhaskar.ExampleSpringboot;
+package com.rajeshBhaskar.ExampleSpringboot.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
     @RequestMapping("/")
-    public String home(){
+    public String home() {
         return "Hello World!";
     }
 }

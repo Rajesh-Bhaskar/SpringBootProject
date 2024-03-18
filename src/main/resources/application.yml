@@ -1,6 +1,6 @@
 logging:
-    pattern:
-        console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
 #spring:
 #    datasource:
 #        driverClassName: org.h2.Driver
@@ -20,17 +20,33 @@ logging:
 #                format_sql: true
 #                generate_statistics: false
 #        show-sql: true
-
+server:
+  port: 8083
 spring:
-    datasource:
-        url: jdbc:postgresql://localhost:5432/TBL_EMPLOYEES
-        username: postgres
-        password:
-        driver-class-name: org.postgresql.Driver
-    jpa:
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-        hibernate:
-            ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/TBL_EMPLOYEES
+    username: postgres
+    password:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  cloud:
+    gateway:
+      routes:
+        - id: Microservice1
+          uri: http://localhost:8081/
+          Predicates:
+            - Path=/serviceA/**
+        - id: Microservice2
+          uri: http://localhost:8082/
+          Predicates:
+            - Path=/serviceB/**
+
+
+
+
 
 
 

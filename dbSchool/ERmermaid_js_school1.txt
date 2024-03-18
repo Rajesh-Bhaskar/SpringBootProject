@@ -1,0 +1,57 @@
+erDiagram
+    CLASS ||--|{ STUDENT : "Has"
+    CLASS ||--o| TEACHER : "Taught by"
+    STUDENT ||--o{ PARENT : "Has"
+    CLASS ||--|{ SUBJECT : "Covers"
+    CLASS ||--o{ ATTENDANCE : "Takes place in"
+    TEACHER ||--o{ ATTENDANCE : "Marks"
+    ATTENDANCE }|--|| STUDENT : "Records for"
+    USER ||--|{ ROLE : "Has"
+    TEACHER ||--o| USER : "User account"
+    PARENT ||--o| USER : "User account"
+    
+    CLASS {
+        int class_id
+        string name
+        int subject_id
+        int teacher_id
+    }
+    TEACHER {
+        int teacher_id
+        string name
+    }
+    STUDENT {
+        int student_id
+        string name
+        int class_id
+        int parent_id
+    }
+    PARENT {
+        int parent_id
+        string name
+        string email
+        string phone
+    }
+    SUBJECT {
+        int subject_id
+        string name
+    }
+    ATTENDANCE {
+        int attendance_id
+        int class_id
+        int student_id
+        string status
+        string date
+        int marked_by_teacher_id
+    }
+    USER {
+        int user_id
+        string username
+        string password
+        int role_id
+    }
+    ROLE {
+        int role_id
+        string role_name
+        string description
+    }
